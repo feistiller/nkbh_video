@@ -12,3 +12,6 @@
 */
 
 Route::get('/', 'IndexController@index');
+Route::get('/admin');
+Route::get('/mainList','IndexController@mainList');
+Route::get('/api/getData','IndexController@getData');

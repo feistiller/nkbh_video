@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./assets/css/ionicons.min.css"/>
     <link rel="stylesheet" href="./assets/css/styles.css"/>
     <link rel="stylesheet" href="./css/other.css"/>
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
 </head>
 <body>
 <nav id="topNav" class="navbar navbar-default navbar-fixed-top">
@@ -41,92 +42,27 @@
         </div>
     </div>
 </nav>
-<header id="first">
-    <div class="header-content">
-        <div class="inner">
-            <h1 class="cursive"> KDY movie station</h1>
-            <h4> 免费免注册磁力发布，提供优质资源和最新最火的视屏资源</h4>
-            <hr>
-            <a href="" id="toggleVideo" data-toggle="collapse" class="btn btn-primary btn-xl">搜索资源</a> &nbsp; <a
-                    href="#one" class="btn btn-primary btn-xl page-scroll">查看资源</a>
-        </div>
+
+<div style="min-height: 500px">
+    <div style="min-height: 100px"></div>
+    <div style="color: white !important;">
+        <table id="myTable">
+            <thead>
+            <tr>
+                <td>资源名称</td>
+                <td>分类</td>
+                <td>资源描述</td>
+                <td>URL</td>
+                <td>更新日期</td>
+            </tr>
+            </thead>
+            <tbody id="tbodyMain">
+            </tbody>
+        </table>
     </div>
-</header>
-<section class="bg-primary" id="one">
-    <div class="container">
-        <div class="row">
-            <div style="color: black" class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 text-center">
-                <h2 class="margin-top-0 text-primary">最近更新</h2>
-                <br>
-                <ul class="list-group">
-                    <li class="list-group-item mainColor">
-                        <a href="">
-                            <div style="padding-bottom: 20px">
-                                <div class="col-md-6">
-                                    名称
-                                </div>
-                                <div class="col-md-6">
-                                    时间
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="list-group-item mainColor">
-                        <a href="">
-                            <div style="padding-bottom: 20px">
-                                <div class="col-md-6">
-                                    xxxx
-                                </div>
-                                <div class="col-md-6">
-                                    2016-05-05
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-                <a style="font-size: 10px" href="/mainList" class="btn btn-default btn-xl page-scroll">查看更多</a>
-            </div>
-        </div>
-    </div>
-</section>
+
+</div>
 <div class="copyrights">Collect from <a href="http://www.uneedzf.com/">KDY movie</a></div>
-<section id="last">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 text-center">
-                <h2 class="margin-top-0 wow fadeIn"></h2>
-                <hr class="primary">
-                <p style="font-size: 10px">如果您需要的资源不在本站，则请通过留言的方式回复管理员。点击查看更多<a>留言</a></p>
-            </div>
-            <div class="col-lg-10 col-lg-offset-1 text-center">
-                <form class="contact-form row">
-                    <div class="col-md-4">
-                        <label></label>
-                        <input type="text" class="form-control" placeholder="标题" name="title">
-                    </div>
-                    <div class="col-md-4">
-                        <label></label>
-                        <input type="text" class="form-control"  placeholder="email(不会公开)" name="email">
-                    </div>
-                    <div class="col-md-4">
-                        <label></label>
-                        <input type="text" class="form-control" placeholder="手机(可不填)">
-                    </div>
-                    <div class="col-md-12">
-                        <label></label>
-                        <textarea class="form-control" rows="9" placeholder="希望我们添加的功能或者想要的.."></textarea>
-                    </div>
-                    <div class="col-md-4 col-md-offset-4">
-                        <label></label>
-                        <button style="font-size: 10px"  type="button" data-toggle="modal" data-target="#alertModal"
-                                class="btn btn-primary btn-block btn-lg">留言 <i class="ion-android-arrow-forward"></i>
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
 <footer id="footer">
     <div class="container-fluid">
         <div class="row">
@@ -184,5 +120,17 @@
 <script src="./assets/js/jquery.easing.min.js"></script>
 <script src="./assets/js/wow.js"></script>
 <script src="./assets/js/scripts.js"></script>
+<script src="http://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $('#myTable').DataTable({
+            ajax: '/api/getData',
+            columns: [
+                {id: 1},
+                {type: 2}
+            ]
+        });
+    });
+</script>
 </body>
 </html>
