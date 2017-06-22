@@ -71,8 +71,8 @@ class IndexController extends BaseController
         $id = $request->input('id');
         $full = DB::table('nkbh_mainfull')->where('mainid', $id)->first();
         $data_temp3 = array(
-            'viewnum' => (int)$full->viewnum+1,
-            'downloadnum' => (int)$full->viewnum+1,
+            'viewnum' => (int)$full->viewnum + 1,
+            'downloadnum' => (int)$full->viewnum + 1,
             'date' => date('Y-m-d', time()),
         );
         DB::table('nkbh_mainfull')->where('mainid', $id)->update($data_temp3);
@@ -91,25 +91,32 @@ class IndexController extends BaseController
     //showMessage
     public function showMessage()
     {
-
+        $data = DB::table('nkbh_talk')->get();
+        return view('Index.message', ['datas' => $data]);
     }
 
     //addMessage
-    public function addMessage()
+    public function addMessage(Request $request)
     {
-
+        $text = $request->input('title');
+        $email = $request->input('email');
+        $wannare = $request->input('wannare');
+        $phone = $request->input('phone');
+        if (sizeof($text) != 0 || sizeof($email) != 0 || sizeof($wannare) != 0 || sizeof($phone) != 0) {
+            $data = array(
+                'permit' => 0,
+                'date' => date('Y-m-d H:i:s', time()),
+                'text' => $text,
+                'email' => $email,
+                'wannare' => $wannare,
+                'phone' => $phone
+            );
+            DB::table('nkbh_talk')->insert($data);
+            return redirect()->action('IndexController@index');
+        } else {
+            return redirect()->action('IndexController@index');
+        }
     }
 
-    //addView
-    public function addView()
-    {
-
-    }
-
-    //addDownload
-    public function addDownload()
-    {
-
-    }
 
 }

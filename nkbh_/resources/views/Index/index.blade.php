@@ -30,7 +30,7 @@
                     <a class="page-scroll" href="#one">资源列表</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#two">留言求种</a>
+                    <a class="page-scroll" href="#last">留言求种</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -47,8 +47,8 @@
             <h1 class="cursive"> KDY movie station</h1>
             <h4> 免费免注册磁力发布，提供优质资源和最新最火的视屏资源</h4>
             <hr>
-            <a href="" id="toggleVideo" data-toggle="collapse" class="btn btn-primary btn-xl">搜索资源</a> &nbsp; <a
-                    href="#one" class="btn btn-primary btn-xl page-scroll">查看资源</a>
+            <a href="/mainList" id="toggleVideo" data-toggle="collapse" class="btn btn-primary btn-xl">搜索资源</a> &nbsp;
+            <a href="#one" class="btn btn-primary btn-xl page-scroll">查看资源</a>
         </div>
     </div>
 </header>
@@ -96,31 +96,33 @@
             <div class="col-lg-8 col-lg-offset-2 text-center">
                 <h2 class="margin-top-0 wow fadeIn"></h2>
                 <hr class="primary">
-                <p style="font-size: 10px">如果您需要的资源不在本站，则请通过留言的方式回复管理员。点击查看更多<a>留言</a></p>
+                <p style="font-size: 10px">如果您需要的资源不在本站，则请通过留言的方式回复管理员。点击查看更多<a href="/message" target="_blank">留言</a>
+                </p>
             </div>
             <div class="col-lg-10 col-lg-offset-1 text-center">
-                <form class="contact-form row">
+                <form action="/addMessage" method="post" class="contact-form row">
+                    {{ csrf_field() }}
                     <div class="col-md-4">
                         <label></label>
                         <input type="text" class="form-control" placeholder="标题" name="title">
                     </div>
                     <div class="col-md-4">
                         <label></label>
-                        <input type="text" class="form-control"  placeholder="email(不会公开)" name="email">
+                        <input type="text" class="form-control" placeholder="email(不会公开)" name="email">
                     </div>
                     <div class="col-md-4">
                         <label></label>
-                        <input type="text" class="form-control" placeholder="手机(可不填)">
+                        <input type="text" class="form-control" placeholder="手机(可不填)" name="phone">
                     </div>
                     <div class="col-md-12">
                         <label></label>
-                        <textarea class="form-control" rows="9" placeholder="希望我们添加的功能或者想要的.."></textarea>
+                        <textarea class="form-control" rows="9" placeholder="希望我们添加的功能或者想要的.."
+                                  name="wannare"></textarea>
                     </div>
                     <div class="col-md-4 col-md-offset-4">
                         <label></label>
-                        <button style="font-size: 10px"  type="button" data-toggle="modal" data-target="#alertModal"
-                                class="btn btn-primary btn-block btn-lg">留言 <i class="ion-android-arrow-forward"></i>
-                        </button>
+                        <input style="font-size: 10px" type="submit" data-toggle="modal" data-target="#alertModal"
+                               class="btn btn-primary btn-block btn-lg" value="留言">
                     </div>
                 </form>
             </div>
@@ -133,15 +135,15 @@
             <div class="col-xs-6 col-sm-3 column">
                 <h4>管理</h4>
                 <ul class="list-unstyled">
-                    <li><a href="">后台</a></li>
-                    <li><a href="">微信公众号</a></li>
+                    {{--<li><a href="">后台</a></li>--}}
+                    <li><a href="/">微信公众号</a></li>
                 </ul>
             </div>
             <div class="col-xs-6 col-sm-3 column">
                 <h4>服务</h4>
                 <ul class="list-unstyled">
-                    <li><a href="#">资源列表</a></li>
-                    <li><a href="#">留言</a></li>
+                    <li><a href="/mainList">资源列表</a></li>
+                    <li><a href="/">留言</a></li>
                 </ul>
             </div>
             <div class="col-xs-12 col-sm-3 column">

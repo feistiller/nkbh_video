@@ -28,10 +28,10 @@
         <div class="navbar-collapse collapse" id="bs-navbar">
             <ul class="nav navbar-nav">
                 <li>
-                    <a class="page-scroll" href="#one">资源列表</a>
+                    <a class="page-scroll" href="/">资源列表</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#two">留言求种</a>
+                    <a class="page-scroll" href="/">留言求种</a>
                 </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -43,7 +43,7 @@
     </div>
 </nav>
 
-<div style="background-color: #b3b3b3; min-height: 500px">
+<div style="background-color: #b3b3b3; min-height: 500px;padding-bottom: 30px">
     <div style="min-height: 100px"></div>
     <div class="row" style="padding-bottom: 20px">
         <div class="col-md-1"></div>
@@ -94,7 +94,7 @@
             <div class="col-xs-6 col-sm-3 column">
                 <h4>管理</h4>
                 <ul class="list-unstyled">
-                    <li><a href="">后台</a></li>
+                    {{--<li><a href="">后台</a></li>--}}
                     <li><a href="">微信公众号</a></li>
                 </ul>
             </div>
@@ -197,15 +197,15 @@
                 targets: 4,//操作按钮目标列
                 data: "id",
                 "render": function (data, type, row) {
-                    var html = "<a  href='/description?id=" + data + "' class='btn btn-primary btn-xs' target='_blank' style='color: black' > 查看详情</a>"
+                    var html = "<a  href='/description?id=" + data + "' class='btn btn-primary btn-xs' target='_blank' style='color:'_black' > 查看详情</a>"
                     return html;
                 }
             },{
 // 定义操作列
                 targets: 2,//操作按钮目标列
-                data: "url",
+                data: "id",
                 "render": function (data, type, row) {
-                    var html = "<a href='" + data + "'  class='btn btn-primary btn-xs' style='color: black' target='_blank'> 点击下载</a>"
+                    var html = "<a  href='/description?id=" + data + "' class='btn btn-primary btn-xs' style='color: black' target='_blank'> 点击下载</a>"
                     return html;
                 }
             }],
