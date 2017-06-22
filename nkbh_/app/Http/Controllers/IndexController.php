@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
+use NKBH\MyTools\M_Log;
 
 class IndexController extends BaseController
 {
@@ -17,8 +18,8 @@ class IndexController extends BaseController
     //列表
     public function mainList()
     {
-        $data=DB::table('nkbh_type')->get();
-        return view('Index.mainList',['types'=>$data]);
+        $data = DB::table('nkbh_type')->get();
+        return view('Index.mainList', ['types' => $data]);
     }
 
     //search
@@ -51,9 +52,9 @@ class IndexController extends BaseController
                 foreach ($temp_type as $item1) {
                     $temp = DB::table('nkbh_type')->select('typename')->where('id', $item1)->first();
                     $return_temp[$k]['typeId'][] = $item1;
-                    if(is_string($return_temp[$k]['typeName'])){
-                        $return_temp[$k]['typeName'] =$return_temp[$k]['typeName'].','.$temp->typename;
-                    }else{
+                    if (is_string($return_temp[$k]['typeName'])) {
+                        $return_temp[$k]['typeName'] = $return_temp[$k]['typeName'] . ',' . $temp->typename;
+                    } else {
                         $return_temp[$k]['typeName'] = (string)$temp->typename;
                     }
                 }
@@ -68,9 +69,23 @@ class IndexController extends BaseController
     public function indexMain(Request $request)
     {
         $id = $request->input('id');
-        $data=DB::table('nkbh_maindata')->where('id',$id)->first();
-        $data->full=DB::table('nkbh_mainfull')->where('mainid',$id)->first();
-        return view('Index.movie',['data'=>$data]);
+        $full = DB::table('nkbh_mainfull')->where('mainid', $id)->first();
+        $data_temp3 = array(
+            'viewnum' => (int)$full->viewnum+1,
+            'downloadnum' => (int)$full->viewnum+1,
+            'date' => date('Y-m-d', time()),
+        );
+        DB::table('nkbh_mainfull')->where('mainid', $id)->update($data_temp3);
+//        写入日志
+        $log = new M_Log();
+        $log_string = array(
+            'mainId' => $id,
+            'IP' => $_SERVER["REMOTE_ADDR"]
+        );
+        $log->baseLog(json_encode($log_string), public_path() . '/log', '/viewLog/', 'viewLog');
+        $data = DB::table('nkbh_maindata')->where('id', $id)->first();
+        $data->full = $full;
+        return view('Index.movie', ['data' => $data]);
     }
 
     //showMessage

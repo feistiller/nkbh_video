@@ -152,6 +152,7 @@
         $('#myTable').DataTable({
             searching: false,
             lengthChange: false,
+            iDisplayLength: 50,
             language: {
                 "sProcessing": "处理中...",
                 "sLengthMenu": "每页 _MENU_ 项",
@@ -192,11 +193,19 @@
 
             ],
             columnDefs: [{
-// 定义操作列,######以下是重点########
+// 定义操作列
                 targets: 4,//操作按钮目标列
                 data: "id",
                 "render": function (data, type, row) {
-                    var html = "<a href='/description?id=" + data + "' class='btn btn-primary btn-xs' style='color: black' > 查看详情</a>"
+                    var html = "<a  href='/description?id=" + data + "' class='btn btn-primary btn-xs' target='_blank' style='color: black' > 查看详情</a>"
+                    return html;
+                }
+            },{
+// 定义操作列
+                targets: 2,//操作按钮目标列
+                data: "url",
+                "render": function (data, type, row) {
+                    var html = "<a href='" + data + "'  class='btn btn-primary btn-xs' style='color: black' target='_blank'> 点击下载</a>"
                     return html;
                 }
             }],
