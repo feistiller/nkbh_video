@@ -12,7 +12,11 @@ class IndexController extends BaseController
     //主
     public function index()
     {
-        return view('Index.index');
+        $data = DB::table('nkbh_maindata')->select('id', 'title', 'date')->orderBy('id', 'desc')->take(5)->get();
+        foreach ($data as $k=>$v){
+            $data[$k]->title=substr((string)$v->title,0,32).'…';
+        }
+        return view('Index.index', ['datas' => $data]);
     }
 
     //列表
@@ -30,13 +34,12 @@ class IndexController extends BaseController
         if ($type) {
             $where[] = ['typeid', 'like', "%" . $type . "%"];
         }
-//        var_dump($where);die
         $title = $request->input('title');
 //        var_dump($title);die;
         if ($title) {
             $where[] = ['title', 'like', "%" . $title . "%"];
         }
-        $data = DB::table('nkbh_maindata')->select('id', 'url', 'typeid', 'title', 'date')->where($where)->get();
+        $data = DB::table('nkbh_maindata')->select('id', 'url', 'typeid', 'title', 'date')->where($where)->orderBy('id', 'desc')->get();
         $return_temp = [];
         if (isset($data[0])) {
             foreach ($data as $k => $item) {
@@ -91,7 +94,8 @@ class IndexController extends BaseController
     //showMessage
     public function showMessage()
     {
-        $data = DB::table('nkbh_talk')->get();
+//        获取审核通过的消息
+        $data = DB::table('nkbh_talk')->where('permit', 1)->get();
         return view('Index.message', ['datas' => $data]);
     }
 

@@ -57,7 +57,7 @@
                 </div>
                 <hr>
                 <div>
-                    <span>下载次数：{{$data->full->downloadnum}}</span>
+                    <span style="color: indianred">下载次数：{{$data->full->downloadnum}}</span>
                     <span>下载地址：<a href="{{$data->url}}">点击下载</a></span>
                 </div>
                 <hr>
@@ -84,8 +84,8 @@
             <div class="col-xs-6 col-sm-3 column">
                 <h4>服务</h4>
                 <ul class="list-unstyled">
-                    <li><a href="#">资源列表</a></li>
-                    <li><a href="#">留言</a></li>
+                    <li><a href="/mainList">资源列表</a></li>
+                    <li><a href="/">留言</a></li>
                 </ul>
             </div>
             <div class="col-xs-12 col-sm-3 column">

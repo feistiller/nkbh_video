@@ -55,7 +55,7 @@
 <section class="bg-primary" id="one">
     <div class="container">
         <div class="row">
-            <div style="color: black" class="col-lg-6 col-lg-offset-3 col-md-8 col-md-offset-2 text-center">
+            <div style="color: black" class="col-md-12 text-center">
                 <h2 class="margin-top-0 text-primary">最近更新</h2>
                 <br>
                 <ul class="list-group">
@@ -71,18 +71,20 @@
                             </div>
                         </a>
                     </li>
-                    <li class="list-group-item mainColor">
-                        <a href="">
-                            <div style="padding-bottom: 20px">
-                                <div class="col-md-6">
-                                    xxxx
+                    @foreach($datas as $data)
+                        <li class="list-group-item mainColor">
+                            <a href="/movie?id={{$data->id}}">
+                                <div style="padding-bottom: 20px">
+                                    <div class="col-md-6">
+                                        {{$data->title}}
+                                    </div>
+                                    <div class="col-md-6">
+                                        {{$data->date}}
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    2016-05-05
-                                </div>
-                            </div>
-                        </a>
-                    </li>
+                            </a>
+                        </li>
+                    @endforeach
                 </ul>
                 <a style="font-size: 10px" href="/mainList" class="btn btn-default btn-xl page-scroll">查看更多</a>
             </div>
