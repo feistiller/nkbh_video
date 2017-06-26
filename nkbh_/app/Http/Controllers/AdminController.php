@@ -28,8 +28,8 @@ class AdminController extends BaseController
                 );
 //                var_dump($data_temp2);
 //                $id=1;
-                $log = new M_Log();
-                $log->baseLog($data_temp[0],public_path().'/log','/dataImport/','dataImport');
+//                $log = new M_Log();
+//                $log->baseLog($data_temp[0],public_path().'/log','/dataImport/','dataImport');
                 $id = DB::table('nkbh_maindata')->insertGetId($data_temp2);
                 $data_temp3 = array(
                     'mainid' => $id,
@@ -39,7 +39,7 @@ class AdminController extends BaseController
                 );
 //                var_dump($data_temp3);
                 $id2 = DB::table('nkbh_mainfull')->insertGetId($data_temp3);
-                $log->baseLog("success" . $id ,public_path().'/log','/dataImport/','dataImport');
+//                $log->baseLog("success" . $id ,public_path().'/log','/dataImport/','dataImport');
                 sleep(0.5);
                 $data_temp = [];
             }

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Http\Request;
-use NKBH\MyTools\M_Log;
 
 class IndexController extends BaseController
 {
@@ -80,12 +79,12 @@ class IndexController extends BaseController
         );
         DB::table('nkbh_mainfull')->where('mainid', $id)->update($data_temp3);
 //        写入日志
-        $log = new M_Log();
-        $log_string = array(
-            'mainId' => $id,
-            'IP' => $_SERVER["REMOTE_ADDR"]
-        );
-        $log->baseLog(json_encode($log_string), public_path() . '/log', '/viewLog/', 'viewLog');
+//        $log = new M_Log();
+//        $log_string = array(
+//            'mainId' => $id,
+//            'IP' => $_SERVER["REMOTE_ADDR"]
+//        );
+//        $log->baseLog(json_encode($log_string), public_path() . '/log', '/viewLog/', 'viewLog');
         $data = DB::table('nkbh_maindata')->where('id', $id)->first();
         $data->full = $full;
         return view('Index.movie', ['data' => $data]);
