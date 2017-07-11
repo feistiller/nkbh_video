@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./assets/css/ionicons.min.css"/>
     <link rel="stylesheet" href="./assets/css/styles.css"/>
     <link rel="stylesheet" href="./css/other.css"/>
+
 </head>
 <body>
 <nav id="topNav" class="navbar navbar-default navbar-fixed-top">
@@ -145,7 +146,7 @@
                 <h4>服务</h4>
                 <ul class="list-unstyled">
                     <li><a href="/mainList">资源列表</a></li>
-                    <li><a href="/">留言</a></li>
+                    <li><a href="/message">留言</a></li>
                 </ul>
             </div>
             <div class="col-xs-12 col-sm-3 column">

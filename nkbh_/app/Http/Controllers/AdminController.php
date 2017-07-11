@@ -49,7 +49,7 @@ class AdminController extends BaseController
     //登录
     public function login()
     {
-
+        return view('Admin.login');
     }
 
     //exit

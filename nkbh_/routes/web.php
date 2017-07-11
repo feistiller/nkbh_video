@@ -20,6 +20,6 @@ Route::get('/message','IndexController@showMessage');
 Route::post('/addMessage','IndexController@addMessage');
 //Route::get('/e2m','AdminController@e2m');
 Route::get('/e2m','AdminController@e2m');
-
+Route::get('/admin','AdminController@login');
 //API
 Route::get('/api/list','ApiController@index');

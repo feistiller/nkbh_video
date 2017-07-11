@@ -11,11 +11,14 @@
     <link rel="stylesheet" href="./assets/css/ionicons.min.css"/>
     <link rel="stylesheet" href="./assets/css/styles.css"/>
     <link rel="stylesheet" href="./css/other.css"/>
-    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css">
+    <link href="https://cdn.bootcss.com/datatables/1.10.15/css/dataTables.bootstrap.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/datatables/1.10.15/css/jquery.dataTables.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/datatables/1.10.15/css/dataTables.uikit.css" rel="stylesheet">
+
 </head>
 <body>
 <nav id="topNav" class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
+    <div style="background-color: #636363" class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-navbar">
                 <span class="sr-only">KDY movie</span>
@@ -145,7 +148,8 @@
 <script src="./assets/js/jquery.easing.min.js"></script>
 <script src="./assets/js/wow.js"></script>
 <script src="./assets/js/scripts.js"></script>
-<script src="http://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.bootcss.com/datatables/1.10.15/js/jquery.dataTables.js"></script>
+<script src="https://cdn.bootcss.com/datatables/1.10.15/js/dataTables.bootstrap.js"></script>
 <script>
     $(document).ready(function () {
         console.log(getUrlParam('title'))
@@ -192,8 +196,7 @@
                 {data: "date"},
 
             ],
-            columnDefs: [{
-// 定义操作列
+            columnDefs: [{// 定义操作列
                 targets: 4,//操作按钮目标列
                 data: "id",
                 "render": function (data, type, row) {
