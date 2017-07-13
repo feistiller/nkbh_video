@@ -4,7 +4,7 @@
 <body>
 <div style="width:30%;padding-left: 30%;padding-top: 50px">
     <div class="uk-margin uk-card uk-card-default uk-card-body">
-        <form>
+        <form action="/login" method="post">
             <fieldset class="uk-fieldset">
                 <legend class="uk-legend">Login</legend>
                 <div class="uk-margin">
@@ -13,6 +13,7 @@
                 <div class="uk-margin">
                     <input class="uk-input" name="password" type="password" placeholder="password">
                 </div>
+                {{ csrf_field() }}
                 <div style="align-items: center;
     justify-content: center;
     height: 100%;">

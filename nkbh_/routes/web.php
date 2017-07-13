@@ -23,3 +23,6 @@ Route::get('/e2m','AdminController@e2m');
 Route::get('/admin','AdminController@login');
 //API
 Route::get('/api/list','ApiController@index');
+
+Route::post('/login','AdminController@userLogin');
+Route::get('/aIndex','AdminController@index');

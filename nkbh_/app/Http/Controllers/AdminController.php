@@ -52,6 +52,20 @@ class AdminController extends BaseController
         return view('Admin.login');
     }
 
+    //checkUser
+    public function userLogin(Request $request)
+    {
+        $username = $request->input('username');
+        $password = $request->input('password');
+        $realPassword = DB::table('nkbh_admin')->select('password')->where('username', $username)->first();
+        if (isset($realPassword->password) && $realPassword->password == $password) {
+            session(['username' => $password]);
+            return redirect('/aIndex');
+        } else {
+            return redirect('/admin');
+        }
+    }
+
     //exit
     public function logout()
     {
@@ -73,7 +87,11 @@ class AdminController extends BaseController
     //主
     public function index()
     {
-        var_dump(1);
+        if(!$this->checkUserLogin()){
+            return redirect('/admin');
+        };
+        return view("Admin.index");
+        
     }
 
     //description
@@ -116,6 +134,17 @@ class AdminController extends BaseController
     public function passMessage()
     {
 
+    }
+
+    //checkUserLoginOrNot
+    private function checkUserLogin()
+    {
+        $username = session('username');
+        if (!$username) {
+            return 0;
+        }else{
+            return 1;
+        }
     }
 
 }
