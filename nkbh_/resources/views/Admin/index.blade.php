@@ -11,7 +11,27 @@
         <li><a href="#">日志</a></li>
     </ul>
     <ul class="uk-switcher uk-margin">
-        <li>Hello again!</li>
+        <li>
+            <table class="uk-table uk-table-middle">
+                <thead>
+                <tr>
+                    <td>标题</td>
+                    <td>URL</td>
+                    <td>操作</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>title</td>
+                    <td>http://www.baidu.com</td>
+                    <td>
+                        <button class="uk-button uk-button-default uk-button-small">删除</button>
+                        <button class="uk-button uk-button-default uk-button-small">修改</button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </li>
         <li>
             <form>
                 <fieldset class="uk-fieldset">
@@ -41,7 +61,7 @@
             </form>
         </li>
 
-        <li>Bazinga!</li>
+        <li>Coming soon</li>
     </ul>
 
 </div>

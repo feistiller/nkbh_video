@@ -48,7 +48,7 @@
             <h1 class="cursive"> KDY movie station</h1>
             <h4> 免费免注册磁力发布，提供优质资源和最新最火的视屏资源</h4>
             <hr>
-            <a href="/mainList" id="toggleVideo" data-toggle="collapse" class="btn btn-primary btn-xl">搜索资源</a> &nbsp;
+            <a href="/mainList" class="btn btn-primary btn-xl">搜索资源</a> &nbsp;
             <a href="#one" class="btn btn-primary btn-xl page-scroll">查看资源</a>
         </div>
     </div>
