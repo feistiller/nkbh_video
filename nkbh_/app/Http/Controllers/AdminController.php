@@ -58,7 +58,7 @@ class AdminController extends BaseController
         $username = $request->input('username');
         $password = $request->input('password');
         $realPassword = DB::table('nkbh_admin')->select('password')->where('username', $username)->first();
-        if (isset($realPassword->password) && $realPassword->password == $password) {
+        if (isset($realPassword->password) && $realPassword->password == md5($password)) {
             session(['username' => $password]);
             return redirect('/aIndex');
         } else {
@@ -87,11 +87,27 @@ class AdminController extends BaseController
     //主
     public function index()
     {
-        if(!$this->checkUserLogin()){
+        if (!$this->checkUserLogin()) {
             return redirect('/admin');
         };
-        return view("Admin.index");
-        
+        $data = DB::table('nkbh_type')->get();
+        return view("Admin.index", ['types' => $data]);
+
+    }
+
+//    添加类型
+    public function addType(Request $request)
+    {
+        if (!$this->checkUserLogin()) {
+            return redirect('/admin');
+        };
+        $typename = $request->input('typename');
+        if (DB::table('nkbh_type')->insertGetId(array('typename' => $typename))) {
+//            meixie
+        } else {
+            //            meixie
+        }
+        return redirect('/aIndex');
     }
 
     //description
@@ -101,7 +117,7 @@ class AdminController extends BaseController
     }
 
     //addNew
-    public function addVideo()
+    public function addVideo(Request $request)
     {
 
     }
@@ -142,7 +158,7 @@ class AdminController extends BaseController
         $username = session('username');
         if (!$username) {
             return 0;
-        }else{
+        } else {
             return 1;
         }
     }

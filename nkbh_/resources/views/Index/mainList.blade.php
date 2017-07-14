@@ -88,7 +88,6 @@
             </table>
         </div>
     </div>
-
 </div>
 <div class="copyrights">Collect from <a href="http://www.uneedzf.com/">KDY movie</a></div>
 <footer id="footer">

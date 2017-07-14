@@ -26,3 +26,5 @@ Route::get('/api/list','ApiController@index');
 
 Route::post('/login','AdminController@userLogin');
 Route::get('/aIndex','AdminController@index');
+Route::post('/addData',"AdminController@addVideo");
+Route::post('/addType',"AdminController@addType");
