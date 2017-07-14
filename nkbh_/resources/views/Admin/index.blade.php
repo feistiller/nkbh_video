@@ -171,7 +171,7 @@
                 targets: 4,//操作按钮目标列
                 data: "id",
                 "render": function (data, type, row) {
-                    var html = "<a  href='/description?id=" + data + "' class='uk-button uk-button-default uk-button-small' target='_blank' style='color:black' > 删除</a>"
+                    var html = "<a  href='/delData?id=" + data + "' class='uk-button uk-button-default uk-button-small' style='color:black' > 删除</a>"
                     html = html + "&nbsp<a  href='/description?id=" + data + "' class='uk-button uk-button-default uk-button-small' style='color: black' target='_blank'> 修改</a>"
                     html = html + "&nbsp<a  href='/description?id=" + data + "' class='uk-button uk-button-default uk-button-small' style='color: black' target='_blank'>查看</a>"
                     return html;

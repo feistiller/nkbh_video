@@ -110,11 +110,6 @@ class AdminController extends BaseController
         return redirect('/aIndex');
     }
 
-    //description
-    public function indexMain(Request $request)
-    {
-
-    }
 
     //addNew
     public function addVideo(Request $request)
@@ -123,9 +118,18 @@ class AdminController extends BaseController
     }
 
     //deleteNew
-    public function deleteVideo()
+    public function deleteVideo(Request $request)
     {
+        if (!$this->checkUserLogin()) {
+            return redirect('/admin');
+        };
+        $id=$request->input('id');
+        if(DB::table('nkbh_maindata')->where('id',$id)->delete()){
 
+        }else{
+
+        }
+        return redirect('/aIndex');
     }
 
     //changeVideo

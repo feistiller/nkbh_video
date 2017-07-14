@@ -28,3 +28,4 @@ Route::post('/login','AdminController@userLogin');
 Route::get('/aIndex','AdminController@index');
 Route::post('/addData',"AdminController@addVideo");
 Route::post('/addType',"AdminController@addType");
+Route::get('/delData',"AdminController@deleteVideo");
