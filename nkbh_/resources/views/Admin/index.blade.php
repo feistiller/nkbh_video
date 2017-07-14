@@ -108,7 +108,38 @@
         </li>
         <li>Coming soon</li>
     </ul>
-
+</div>
+<div id="modal-change" uk-modal>
+    <div class="uk-modal-dialog uk-modal-body">
+        <h2 class="uk-modal-title">修改</h2>
+        <div id="change-content" style="width: 100%;height: 50%;overflow-y: auto">
+            <form>
+                <fieldset class="uk-fieldset">
+                    <div class="uk-margin">
+                        <input id="form-id" name="id" type="hidden" value="">
+                        <label>标题</label>
+                        <input class="uk-input" type="text" id="form-title" name="title" value="">
+                    </div>
+                    <div class="uk-margin">
+                        <label>分类</label>
+                        <input class="uk-input" type="text" id="form-type" name="type" value="">
+                    </div>
+                    <div class="uk-margin">
+                        <label>url</label>
+                        <input class="uk-input" type="text" id="form-url" name="url" value="">
+                    </div>
+                    <div class="uk-margin">
+                        <label>描述</label>
+                        <textarea style="width: 100%;height: 100px" id="form-description" name="description"></textarea>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+        <p class="uk-text-right">
+            <button class="uk-button uk-button-default uk-modal-close" type="button">Cancel</button>
+            <button class="uk-button uk-button-primary" type="button">Save</button>
+        </p>
+    </div>
 </div>
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
 <script src="https://cdn.bootcss.com/uikit/3.0.0-beta.25/js/uikit.js"></script>
@@ -172,7 +203,7 @@
                 data: "id",
                 "render": function (data, type, row) {
                     var html = "<a  href='/delData?id=" + data + "' class='uk-button uk-button-default uk-button-small' style='color:black' > 删除</a>"
-                    html = html + "&nbsp<a  href='/description?id=" + data + "' class='uk-button uk-button-default uk-button-small' style='color: black' target='_blank'> 修改</a>"
+                    html = html + "&nbsp<a  href='#modal-change' onclick='openModel(" + data + ")' class='uk-button uk-button-default uk-button-small' style='color: black' uk-toggle> 修改</a>"
                     html = html + "&nbsp<a  href='/description?id=" + data + "' class='uk-button uk-button-default uk-button-small' style='color: black' target='_blank'>查看</a>"
                     return html;
                 }
@@ -208,6 +239,14 @@
         } else {
             return null
         }
+    }
+    //    打开model
+    function openModel(id) {
+        $.get("/api/getOneData?id=" + id, function (data, status) {
+                    console.log(data)
+                }
+        )
+//        $('#change-content').append()
     }
 
 </script>

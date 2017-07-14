@@ -23,13 +23,22 @@ class ApiController extends BaseController
     }
 
 //    API化数据
-    private function getReturnDate($data,$id = 0, $message = '')
+    private function getReturnDate($data, $id = 0, $message = '')
     {
         return array(
             'status' => $id,
             'message' => $message,
             'data' => $data
         );
+    }
+
+//    获取单挑数据
+    public function getOneData(Request $request)
+    {
+        $id = $request->input('id');
+        $data = DB::table('nkbh_maindata')->where('id', $id)->first();
+//        var_dump($data);
+        return $this->getReturnDate($data);
     }
 
 }
